@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ta"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.json"><meta name="theme-color" content="#1f6f50"><link rel="icon" href="icon-192.png"><title>கீழகாசாக்குடி சொத்து செலவு கணக்கு</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f6f4ef;--card:#fff;--tx:#1d2420;--mu:#6b746e;--ac:#1f6f50;--bd:#dcd8cd;--rd:#b23a2e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161a18;--card:#202623;--tx:#eaeee9;--mu:#9aa59e;--ac:#4cc093;--bd:#333b37;--rd:#ef7d70}}
+:root[data-theme="dark"]{--bg:#161a18;--card:#202623;--tx:#eaeee9;--mu:#9aa59e;--ac:#4cc093;--bd:#333b37;--rd:#ef7d70}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,"Noto Sans Tamil",sans-serif;font-size:15px}
+h1{font-size:17px;margin:0;padding:14px 14px 8px}
+nav{display:flex;gap:6px;padding:0 10px 8px;overflow-x:auto;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg)}
+nav button{flex:1;white-space:nowrap;padding:9px 10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;font:inherit}
+nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+main{padding:6px 10px 40px;max-width:700px;margin:auto}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px;margin-bottom:10px}
+label{display:block;font-size:12px;color:var(--mu);margin:8px 0 3px}
+input,select{width:100%;padding:9px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);font:inherit}
+.b{background:var(--ac);color:#fff;border:0;padding:10px 14px;border-radius:8px;font:inherit;margin-top:10px;width:100%}
+.x{background:none;border:0;color:var(--rd);font-size:13px;padding:2px 6px}
+.r{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--bd)}
+.m{color:var(--mu);font-size:12px}.neg{color:var(--rd)}.pos{color:var(--ac)}
+.sc{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}td,th{padding:6px 5px;border-bottom:1px solid var(--bd);text-align:right;white-space:nowrap}td:first-child,th:first-child{text-align:left}
+td input{width:90px;padding:5px;text-align:right}
+summary{font-weight:600;cursor:pointer}
+@media print{:root{--bg:#fff;--card:#fff;--tx:#000;--mu:#333;--bd:#888;--rd:#000;--ac:#000}nav,h1,.np{display:none!important}body{font-size:12px}.c{break-inside:avoid;border-radius:0}main{max-width:none}}
+.rt{text-align:center;margin:8px 0}</style></head><body>
+<h1>🏡 கீழகாசாக்குடி – சொத்து செலவு கணக்கு</h1>
+<nav id="nav"></nav><main id="app"></main>
+<script>
+const K='kks_v2';
+const CATS=['Bye-Pass Road','Maathoppu-Manai','145','Quash','Cr-PC403','5815','writ'];
+const RAW={0:`Fencing Labour|50000;Inspector - ASI|35000;GI- Post|87000;Fencing (Chain)|63000;GI- Wire|800;Tempo|2200;Food- Tea|3500;Night Labour|1500;Kalakolli|3000;Judge pathi gift|1000;VAO|15000;land Cleaning (JCB)|2000;Suveryor|1000;Machine|10000;RI|10000;Pondy , Chennai Advocate Expense(Legal opinion, Caveat)|28000;Namavishivayam Case Adv.First Fees|10000;NamaShivayam Case Adv.First Fees|10000`,
+1:`Police|1000;Plot Cleaning|4500;Survey|2500;Ganesan(Notice)|2000;Namasu (Notice)|2000;Ansari Advocate|25000`,
+2:`Ansari Advocate Fee|30000;DCR|5000;Temple Notice|2000;North SP & DCR -Notice|1000;Notice Courier|200;Police|1700;Thirumugan (Adv)|3000;1973 Doc Translate|10000;Hotel Bhuhari|1000;Camera|5000;HRI Office Room|4000;Xerox Printouts|7100;Settlement Patta Sketch|5000;Petrol (For All Member)|6000`,
+3:`145 Squash- Advocate Fee|300000;Chennai Expense|15000;Kaderoli Maricar Partition Document xerox|400;Partition Document -Xerox|1000;Patta Sketch Settlement Copy|1100;1925 TS No 2,3,9|1580;Document Xerox Chennai|1965;1961 partition Document- Tamil Translate|12000;1873 partition Document- Tamil Translate|2000;Drone Photo|3500;Drone Photo Print|400;1973 Scan|1000`,
+4:`Adv.Manokaran Fees|60000;Adv. Manokarn Clerk -Papers|10000;Adv Sreedhar (SO-Report & Police Report)|15000;Supreme Court Advocate - Consultation|10000;Travel Expense|5000;Sreedha Advocate Consultation|10000;Chennai Expense (Hussain, Maricavappa , Riyaz, Faizaan)|4000;Adv. Manokaran - Clerk|6000`,
+5:`VAO Report|10000;VAO Report 2|20000;Advocate Fee(Paid By Dr. Son)|50000`,
+6:`Bus Ticket|1554;Chennai Room Rent|2800;Food (Breakfast & Dinner)|1500;Chennai Room Rent 2|2800;Auto Expense|800;Food (Breakfast & Dinner)|602;Auto 1|200;Auto 2|100;Diesel (M.Vappa & Imraan) Diesel-500, Gas-731, Fasttag-500|1731;Local Advocate|500;Chennai Return Diesel|1231;Chennai Adv Clerk|15000;Adv. Fees (Paid By Dr.son)|200000;Xerox Amount (paid By Dr.son)|4608;Adv. Fees (Paid By Dr.son)|100000;To Sreedhar Advocate|450000`};
+function init(){const e=[];let id=1;for(const c in RAW)RAW[c].split(';').forEach(s=>{const i=s.lastIndexOf('|');const a=+s.slice(i+1);e.push({id:id++,c:+c,n:s.slice(0,i),a,x:(+c==6&&a==450000)})});
+return{owners:[['ஹாஜா ஃபக்ருதீன்',108860.44,[100000,0,0,0,55000,0,151000]],['இப்ராம்ஷா',123730.44,[100000,0,0,0,55000,30000,103500]],['சுல்தான் அஹமது நாட்சியாள்',14618.22,[50000,0,0,0,0,0,50000]],['ஜூலைஹாகனி',14618.22,[50000,0,0,0,0,0,51000]],['ஆசியா உம்மாள்',14618.22,[50000,0,0,0,0,0,52000]],['ராபியத்துல் பசிரியா',14618.22,[50000,0,0,0,0,0,53000]],['சித்தி ஃபரிதா உம்மாள்',14618.22,[25000,0,0,0,10000,0,2000]]].map(o=>({n:o[0],ar:o[1],p:o[2]})),entries:e,nid:id,
+props:[['கடை',237],['கடைக்கு பின்புறம்',10760],['பங்களா',10997],['கல் களம்',823],['பெண்கள் பகுதி',2223],['கிணறு',215],['பாதை',1429],['காளாய் திடல்',8578],['சன்னதி ஓடை',48420],['வயல் பொது',47882]]}}
+let S;try{S=JSON.parse(localStorage.getItem(K))}catch(e){}if(!S)S=init();
+const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
+const E=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $=id=>document.getElementById(id),f=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+let tab=0;const T=['சுருக்கம்','செலவுகள்','செலுத்தியது','சொத்துகள்','🖨 அச்சு'];
+function render(){$('nav').innerHTML=T.map((t,i)=>`<button class="${i==tab?'on':''}" onclick="tab=${i};render()">${t}</button>`).join('');$('app').innerHTML=[vSum,vEnt,vPay,vProp,vPrint][tab]()}
+const catTot=c=>S.entries.filter(e=>e.c==c&&!e.x).reduce((a,e)=>a+e.a,0);
+function vSum(){const tot=CATS.reduce((a,_,i)=>a+catTot(i),0),ex=S.entries.filter(e=>e.x).reduce((a,e)=>a+e.a,0),ta=S.owners.reduce((a,o)=>a+o.ar,0);
+return `<div class="c sc"><b>செலவு தலைப்பு வாரியாக</b><table>${CATS.map((c,i)=>`<tr><td>${c}</td><td>${f(catTot(i)+S.entries.filter(e=>e.c==i&&e.x).reduce((a,e)=>a+e.a,0))}</td></tr>`).join('')}
+<tr><td>மொத்த செலவு</td><td>${f(tot+ex)}</td></tr><tr><td>பங்கில் சேராதது (Dr.son செலுத்தியது)</td><td>${f(ex)}</td></tr><tr><td><b>நிகர செலவு</b></td><td><b>${f(tot)}</b></td></tr></table></div>
+<div class="c sc"><b>நபர் வாரியாக</b><table><tr><th>பெயர்</th><th>%</th><th>செலவு பங்கு</th><th>செலுத்தியது</th><th>மீதம்</th></tr>${S.owners.map(o=>{const sh=tot*o.ar/ta,pd=o.p.reduce((a,b)=>a+b,0),d=sh-pd;return `<tr><td>${E(o.n)}</td><td>${(o.ar/ta*100).toFixed(2)}</td><td>${f(sh)}</td><td>${f(pd)}</td><td class="${d>0?'neg':'pos'}">${d>0?'':'−'}${f(Math.abs(d))}</td></tr>`}).join('')}</table>
+<div class="m">மீதம் சிவப்பு = இன்னும் செலுத்த வேண்டியது; பச்சை = கூடுதலாகச் செலுத்தியது</div></div>`}
+function vEnt(){return `<div class="c"><b>புதிய செலவு</b><label>தலைப்பு</label><select id="c">${CATS.map((c,i)=>`<option value="${i}">${c}</option>`).join('')}</select>
+<label>விபரம்</label><input id="n"><label>தொகை</label><input id="a" type="number" inputmode="decimal">
+<label style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="x" style="width:auto">பங்கு கணக்கில் சேர்க்க வேண்டாம் (வெளியாள் செலுத்தியது)</label>
+<button class="b" onclick="addE()">சேர்</button></div>`+CATS.map((c,i)=>`<details class="c"><summary>${c} — ${f(S.entries.filter(e=>e.c==i).reduce((a,e)=>a+e.a,0))}</summary>${S.entries.filter(e=>e.c==i).map(e=>`<div class="r"><div>${E(e.n)}${e.x?' <span class="m">(பங்கில் இல்லை)</span>':''}</div><div style="white-space:nowrap">${f(e.a)}<button class="x" onclick="delE(${e.id})">✕</button></div></div>`).join('')}</details>`).join('')}
+function addE(){const a=+$('a').value;if(!a)return;S.entries.push({id:S.nid++,c:+$('c').value,n:$('n').value,a,x:$('x').checked});save();render()}
+function delE(id){if(confirm('நீக்கவா?')){S.entries=S.entries.filter(e=>e.id!=id);save();render()}}
+function vPay(){return `<div class="c sc"><div class="m">செலுத்திய தொகை, சேரும் அளவு (ச.அடி) – மாற்றலாம்</div><table><tr><th>பெயர்</th><th>சேரும் அளவு</th>${CATS.map(c=>`<th>${c}</th>`).join('')}</tr>${S.owners.map((o,i)=>`<tr><td>${E(o.n)}</td><td><input type="number" value="${o.ar}" onchange="S.owners[${i}].ar=+this.value;save()"></td>${o.p.map((v,j)=>`<td><input type="number" value="${v}" onchange="S.owners[${i}].p[${j}]=+this.value;save()"></td>`).join('')}</tr>`).join('')}</table></div>
+<button class="b" onclick="bk()">💾 தரவைக் காப்புப் பிரதி எடு</button><label class="b" style="display:block;text-align:center;color:#fff">📂 காப்புப் பிரதியை மீட்டெடு<input type="file" accept=".json" style="display:none" onchange="rs(this.files[0])"></label><button class="b" style="background:var(--rd)" onclick="if(confirm('எக்செல் தரவுக்கு மீட்டமைக்கவா?')){S=init();save();render()}">எக்செல் தரவுக்கு மீட்டமை</button>`}
+function vProp(){const t=S.props.reduce((a,p)=>a+p[1],0);return `<div class="c sc"><table><tr><th>இடம்</th><th>அளவு (ச.அடி)</th></tr>${S.props.map(p=>`<tr><td>${E(p[0])}</td><td>${p[1].toLocaleString('en-IN')}</td></tr>`).join('')}<tr><td>மொத்தம்</td><td>${t.toLocaleString('en-IN')}</td></tr></table></div>`}
+function vPrint(){const pt=`<table><tr><th>பெயர்</th>${CATS.map(c=>`<th>${c}</th>`).join('')}</tr>${S.owners.map(o=>`<tr><td>${E(o.n)}</td>${o.p.map(v=>`<td>${v?f(v):'-'}</td>`).join('')}</tr>`).join('')}</table>`;
+return `<button class="b np" onclick="window.print()">🖨 அச்சிடு / PDF ஆகச் சேமி</button><div class="rt"><b>கீழகாசாக்குடி வருவாய் கிராமம்<br>சொத்து வழக்கு மற்றும் செலவு கணக்கு</b><br><span class="m">${new Date().toLocaleDateString('en-IN')}</span></div>`+vSum()+`<div class="c sc"><b>செலுத்திய தொகை (வழக்கு வாரியாக)</b>${pt}</div>`+CATS.map((c,i)=>`<div class="c"><b>${c} — ${f(S.entries.filter(e=>e.c==i).reduce((a,e)=>a+e.a,0))}</b><table>${S.entries.filter(e=>e.c==i).map((e,k)=>`<tr><td>${k+1}. ${E(e.n)}${e.x?' (பங்கில் சேராது)':''}</td><td>${f(e.a)}</td></tr>`).join('')}</table></div>`).join('')+vProp()}
+function bk(){const b=new Blob([JSON.stringify(S)],{type:'application/json'}),u=URL.createObjectURL(b),l=document.createElement('a');l.href=u;l.download='kks-backup-'+new Date().toISOString().slice(0,10)+'.json';l.click()}
+function rs(fl){if(!fl)return;const r=new FileReader();r.onload=()=>{try{S=JSON.parse(r.result);save();render()}catch(e){alert('கோப்பு தவறு')}};r.readAsText(fl)}
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+render();
+</script></body></html>
