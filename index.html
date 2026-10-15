@@ -26,6 +26,7 @@ summary{font-weight:600;cursor:pointer}
 .rt{text-align:center;margin:8px 0}.c>b,summary{color:var(--ac);font-weight:800}th{color:var(--ac);font-weight:800}h1{color:var(--ac);font-weight:800}nav button{font-weight:700}@media print{th{background:#1f6f50!important;color:#fff!important}.c>b,summary{color:#14543b}}.o0{background:#c9e4ff!important;color:#000!important}.o1{background:#fff0b8!important;color:#000!important}.o2{background:#c9e4ff!important;color:#000!important}.o3{background:#fff0b8!important;color:#000!important}.o4{background:#c9e4ff!important;color:#000!important}.o5{background:#fff0b8!important;color:#000!important}.o6{background:#c9e4ff!important;color:#000!important}tr[class^="o"] td,tr[class^="o"] td *{color:#000!important}tr[class^="o"] td.neg{color:#d00000!important;font-weight:800}</style></head><body>
 <h1>🏡 கீழகாசாக்குடி – சொத்து செலவு கணக்கு</h1>
 <nav id="nav"></nav><main id="app"></main>
+<script>window.onerror=function(m,u,l){var a=document.getElementById('app');if(a)a.innerHTML='<div class="c"><b>பிழை ஏற்பட்டது</b><div class="m">'+m+' (வரி '+l+')</div><div class="m">இந்தத் திரையின் படத்தை அனுப்புங்கள்.</div></div>'};</script>
 <script>
 const K='kks_v2';
 const CATS=['Bye-Pass Road','Maathoppu-Manai','145','Quash','Cr-PC403','5815','writ'];
@@ -39,7 +40,7 @@ const RAW={0:`Fencing Labour|50000;Inspector - ASI|35000;GI- Post|87000;Fencing 
 function init(){const e=[];let id=1;for(const c in RAW)RAW[c].split(';').forEach(s=>{const i=s.lastIndexOf('|');const a=+s.slice(i+1);e.push({id:id++,c:+c,n:s.slice(0,i),a,x:(+c==6&&a==450000)})});
 return{owners:[['ஹாஜா ஃபக்ருதீன்',108860.44,[100000,0,0,0,55000,0,151000]],['இப்ராம்ஷா',123730.44,[100000,0,0,0,55000,30000,103500]],['சுல்தான் அஹமது நாட்சியாள்',14618.22,[50000,0,0,0,0,0,50000]],['ஜூலைஹாகனி',14618.22,[50000,0,0,0,0,0,51000]],['ஆசியா உம்மாள்',14618.22,[50000,0,0,0,0,0,52000]],['ராபியத்துல் பசிரியா',14618.22,[50000,0,0,0,0,0,53000]],['சித்தி ஃபரிதா உம்மாள்',14618.22,[25000,0,0,0,10000,0,2000]]].map(o=>({n:o[0],ar:o[1],p:o[2]})),entries:e,nid:id,
 props:[['கடை',237],['கடைக்கு பின்புறம்',10760],['பங்களா',10997],['கல் களம்',823],['பெண்கள் பகுதி',2223],['கிணறு',215],['பாதை',1429],['காளாய் திடல்',8578],['சன்னதி ஓடை',48420],['வயல் பொது',47882]]}}
-let S;try{S=JSON.parse(localStorage.getItem(K))}catch(e){}if(!S)S=init();mig();
+let S;try{S=JSON.parse(localStorage.getItem(K))}catch(e){}if(!S||!Array.isArray(S.entries)||!Array.isArray(S.owners)||S.owners.length!=7)S=init();mig();
 const save=()=>{try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}};
 const E=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const $=id=>document.getElementById(id),f=n=>'₹'+Math.round(n).toLocaleString('en-IN');
